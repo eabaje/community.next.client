@@ -6,8 +6,10 @@ import Sidebar from "../../sidebar/Sidebar";
 import ContentWidget from "../../widget";
 import StyledTree from "../../tree/hTree";
 
+const isBrowser = typeof window !== "undefined";
+
 function SecondMiddleContent({ query }) {
-  return (
+  return isBrowser ? (
     <>
       <div className="row">
         <div className="col-lg-3 col-md-12">
@@ -29,13 +31,13 @@ function SecondMiddleContent({ query }) {
           <div className="row">
             <div className="col-lg-12 col-md-12">
               <StyledTree user={null} />
-              {/*  <Chart />*/}
+              {/*   <Chart />*/}
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  ) : null;
 }
 
 export default SecondMiddleContent;
