@@ -22,30 +22,42 @@ const StyledNode = styled.div`
 
 const StyledTree = ({ query }) => {
   return isBrowser ? (
-    <Tree
-      lineWidth={"2px"}
-      lineColor={"green"}
-      lineBorderRadius={"10px"}
-      label={
-        <StyledNode>
-          <StyledTreeItem user={null} />
-        </StyledNode>
-      }
-    >
-      <TreeNode label={<StyledNode>Child 1</StyledNode>}>
-        <TreeNode label={<StyledNode>Grand Child</StyledNode>} />
-      </TreeNode>
-      <TreeNode label={<StyledNode>Child 2</StyledNode>}>
-        <TreeNode label={<StyledNode>Grand Child</StyledNode>}>
-          <TreeNode label={<StyledNode>Great Grand Child 1</StyledNode>} />
-          <TreeNode label={<StyledNode>Great Grand Child 2</StyledNode>} />
+    <>
+      <h3>
+        {query?.type === "paternal"
+          ? "My Paternal Links"
+          : query?.type === "maternal"
+          ? "My Maternal Links"
+          : query?.type === "spousal"
+          ? "My Spousal Links"
+          : "My Relation Links"}
+      </h3>
+      <hr />
+      <Tree
+        lineWidth={"2px"}
+        lineColor={"green"}
+        lineBorderRadius={"10px"}
+        label={
+          <StyledNode>
+            <StyledTreeItem user={null} />
+          </StyledNode>
+        }
+      >
+        <TreeNode label={<StyledNode>Child 1</StyledNode>}>
+          <TreeNode label={<StyledNode>Grand Child</StyledNode>} />
         </TreeNode>
-      </TreeNode>
-      <TreeNode label={<StyledNode>Child 3</StyledNode>}>
-        <TreeNode label={<StyledNode>Grand Child 1</StyledNode>} />
-        <TreeNode label={<StyledNode>Grand Child 2</StyledNode>} />
-      </TreeNode>
-    </Tree>
+        <TreeNode label={<StyledNode>Child 2</StyledNode>}>
+          <TreeNode label={<StyledNode>Grand Child</StyledNode>}>
+            <TreeNode label={<StyledNode>Great Grand Child 1</StyledNode>} />
+            <TreeNode label={<StyledNode>Great Grand Child 2</StyledNode>} />
+          </TreeNode>
+        </TreeNode>
+        <TreeNode label={<StyledNode>Child 3</StyledNode>}>
+          <TreeNode label={<StyledNode>Grand Child 1</StyledNode>} />
+          <TreeNode label={<StyledNode>Grand Child 2</StyledNode>} />
+        </TreeNode>
+      </Tree>
+    </>
   ) : null;
 };
 export default StyledTree;
