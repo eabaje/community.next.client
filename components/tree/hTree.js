@@ -4,6 +4,8 @@ import { Tree, TreeNode } from "react-organizational-chart";
 import dynamic from "next/dynamic";
 import "../../styles/htree.module.css";
 import StyledTreeItem from "./hTreeItem";
+import { useRouter } from "next/router";
+// const router = useRouter()
 
 // const ExampleTree = () => (
 //   <Tree label={<div>Root</div>}>
@@ -21,14 +23,16 @@ const StyledNode = styled.div`
 `;
 
 const StyledTree = ({ query }) => {
+  const router = useRouter();
+  console.log("router", router);
   return isBrowser ? (
     <>
       <h3>
-        {query?.type === "paternal"
+        {router?.query.type === "paternal"
           ? "My Paternal Links"
-          : query?.type === "maternal"
+          : router?.query?.type === "maternal"
           ? "My Maternal Links"
-          : query?.type === "spousal"
+          : router?.query?.type === "spousal"
           ? "My Spousal Links"
           : "My Relation Links"}
       </h3>
@@ -43,18 +47,97 @@ const StyledTree = ({ query }) => {
           </StyledNode>
         }
       >
-        <TreeNode label={<StyledNode>Child 1</StyledNode>}>
-          <TreeNode label={<StyledNode>Grand Child</StyledNode>} />
+        <TreeNode
+          label={
+            <StyledNode>
+              {" "}
+              <StyledTreeItem user={null} />
+            </StyledNode>
+          }
+        >
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          />
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          />
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          />
         </TreeNode>
-        <TreeNode label={<StyledNode>Child 2</StyledNode>}>
-          <TreeNode label={<StyledNode>Grand Child</StyledNode>}>
-            <TreeNode label={<StyledNode>Great Grand Child 1</StyledNode>} />
-            <TreeNode label={<StyledNode>Great Grand Child 2</StyledNode>} />
+        <TreeNode
+          label={
+            <StyledNode>
+              {" "}
+              <StyledTreeItem user={null} />
+            </StyledNode>
+          }
+        >
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          >
+            <TreeNode
+              label={
+                <StyledNode>
+                  {" "}
+                  <StyledTreeItem user={null} />
+                </StyledNode>
+              }
+            />
+            <TreeNode
+              label={
+                <StyledNode>
+                  {" "}
+                  <StyledTreeItem user={null} />
+                </StyledNode>
+              }
+            />
           </TreeNode>
         </TreeNode>
-        <TreeNode label={<StyledNode>Child 3</StyledNode>}>
-          <TreeNode label={<StyledNode>Grand Child 1</StyledNode>} />
-          <TreeNode label={<StyledNode>Grand Child 2</StyledNode>} />
+        <TreeNode
+          label={
+            <StyledNode>
+              {" "}
+              <StyledTreeItem user={null} />
+            </StyledNode>
+          }
+        >
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          />
+          <TreeNode
+            label={
+              <StyledNode>
+                {" "}
+                <StyledTreeItem user={null} />
+              </StyledNode>
+            }
+          />
         </TreeNode>
       </Tree>
     </>
